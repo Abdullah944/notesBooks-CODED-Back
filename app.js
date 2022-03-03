@@ -20,12 +20,14 @@ app.use((req, res, next) => {
 
 //? Router
 // TODO : 1- call the routers & func for both:
-// const productsRouter = require("./api/products/products.router");
-// app.use("/api/products", productsRouter);
+// to use notesBook routers & func:
 const noteBooksRouter = require("./api/noteBook/noteBooks.router");
 app.use("/", noteBooksRouter);
+// to use notes routers & func:
+const notesRouter = require("./api/note/notes.router");
+app.use("/", notesRouter);
 
-//! use img:
+// use img:
 app.use("/media", express.static(path.join(__dirname, "media")));
 
 //? Error handler Middleware

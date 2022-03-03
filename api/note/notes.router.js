@@ -1,39 +1,31 @@
 //? Express
 const express = require("express");
 //? Import Controllers
-const {
-  fetchProductsController,
-  fetchSingleProductController,
-  deleteProductController,
-  updateProductController,
-  fetchProduct,
-} = require("./products.controllers");
+const { getNote, createNote, deleteNote } = require("./notes.controllers");
 const upload = require("../../middleware/multer");
 
 //? Set Router
-const productsRouter = express.Router();
+const notesRouter = express.Router();
 
 //? Params Middleware
-productsRouter.param("productId", async (req, res, next, productId) => {
-  const product = await fetchProduct(productId, next);
-  req.product = product;
-  // if (product) req.product = product;
-  // else {
-  // 	const err = new Error("Product not found");
-  // 	err.status = 404;
-  // 	next(err);
-  // }
-  next();
-});
-// ! what the hole path here? :
+// productsRouter.param("productId", async (req, res, next, productId) => {
+//   const product = await fetchProduct(productId, next);
+//   req.product = product;
+// if (product) req.product = product;
+// else {
+// 	const err = new Error("Product not found");
+// 	err.status = 404;
+// 	next(err);
+// }
+
+// });
 //? Assign Router to Controllers
-productsRouter.get("/", fetchProductsController);
-productsRouter.delete("/:productId", deleteProductController);
-productsRouter.get("/:productId", fetchSingleProductController);
-productsRouter.put(
-  "/:productId",
-  upload.single("image"),
-  updateProductController
-);
+notesRouter.get("/", getNote);
+notesRouter.post("/api/note", createNote);
+notesRouter.delete("/api/note/:noteID", deleteNote);
+
 //? Export Router
-module.exports = productsRouter;
+module.exports = notesRouter;
+
+// shop = notesBook
+// product = note

@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 const mongooseSlugPlugin = require("mongoose-slug-plugin");
 
-const Note = new NoteSchema({
+const NoteSchema = new Schema({
   name: String,
   description: String,
   slug: String,
@@ -11,6 +11,6 @@ const Note = new NoteSchema({
   },
 });
 
-ShopsSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
+NoteSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
 
 module.exports = model("Note", NoteSchema);

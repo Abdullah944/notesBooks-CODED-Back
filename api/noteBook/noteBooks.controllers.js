@@ -27,8 +27,8 @@ exports.createNoteBook = async (req, res, next) => {
 };
 // TODO> <Delete> noteBooks Func :
 exports.deleteNoteBook = async (req, res, next) => {
-  const { noteBooksID } = req.params; // take the params given by the user => google.com/1 <=
-  const foundNotebook = await NoteBook.findByIdAndDelete(noteBooksID); // if the id's of schema &== params id  => delete it.
+  const { noteBookID } = req.params; // take the params given by the user => google.com/1 <=
+  const foundNotebook = await NoteBook.findByIdAndDelete(noteBookID); // if the id's of schema &== params id  => delete it.
   try {
     if (foundNotebook) {
       res.status(204).end(); //delete it (end).
@@ -39,20 +39,37 @@ exports.deleteNoteBook = async (req, res, next) => {
     next(error);
   }
 };
-
-// exports.productUpdate = async (req, res, next) => {
-//     try {
-//       if (req.file) {
-//         req.body.image = `/${req.file.path}`;
-//         req.body.image = req.body.image.replace("\\", "/");
-//       }
-//       const product = await Product.findByIdAndUpdate(
-//         { _id: req.product._id },
-//         req.body,
-//         { new: true, runValidators: true } // returns the updated product
-//       );
-//       res.json(product);
-//     } catch (error) {
-//       next(error);
-//     }
-//   };
+// TODO <Update> noteBook Func TODO:fix it last thing is *null*:
+exports.UpdateNoteBook = async (req, res, next) => {
+  const { noteBookID } = req.params;
+  const notebook = req.body;
+  try {
+    //update take at least 2 argument=> update(id of the product , the data given, options(optional)) -- new is options to give you the updated data without fetching it (auto - directly):
+    const updateNoteBook = await NoteBook.findByIdAndUpdate(
+      noteBookID,
+      notebook,
+      { runValidators: true, new: true }
+    );
+    return res.status(200).json({
+      msg: "NoteBook updated successfully",
+      updateNoteBook: updateNoteBook,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+// try {
+//   if (req.file) {
+//     req.body.image = `/${req.file.path}`;
+//     req.body.image = req.body.image.replace("\\", "/");
+//   }
+//   const product = await Product.findByIdAndUpdate(
+//     { _id: req.product._id },
+//     req.body,
+//     { new: true, runValidators: true } // returns the updated product
+//   );
+//   res.json(product);
+// } catch (error) {
+//   next(error);
+// }
+// };

@@ -5,6 +5,7 @@ const {
   fetchNoteBook,
   createNoteBook,
   deleteNoteBook,
+  UpdateNoteBook,
 } = require("./noteBooks.controllers");
 
 //? Set Router
@@ -18,9 +19,10 @@ const noteBooksRouter = express.Router();
 // });
 
 //? Assign Router to Controllers
-noteBooksRouter.get("/", fetchNoteBook);
+noteBooksRouter.get("/api/noteBook", fetchNoteBook);
 noteBooksRouter.post("/api/noteBook", createNoteBook);
 noteBooksRouter.delete("/api/noteBook/:noteBooksID", deleteNoteBook);
+noteBooksRouter.put("/api/noteBook/:noteBooksID", UpdateNoteBook);
 
 //? Export Router
 module.exports = noteBooksRouter;
