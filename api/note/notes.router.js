@@ -1,7 +1,12 @@
 //? Express
 const express = require("express");
 //? Import Controllers
-const { getNote, createNote, deleteNote } = require("./notes.controllers");
+const {
+  getNote,
+  createNote,
+  deleteNote,
+  updateNote,
+} = require("./notes.controllers");
 const upload = require("../../middleware/multer");
 
 //? Set Router
@@ -23,6 +28,7 @@ const notesRouter = express.Router();
 notesRouter.get("/api/note", getNote);
 notesRouter.post("/api/note/:noteBookID/noteBook", createNote);
 notesRouter.delete("/api/note/:noteID", deleteNote);
+notesRouter.put("/api/note/:noteID", updateNote);
 
 //? Export Router
 module.exports = notesRouter;

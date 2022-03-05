@@ -36,7 +36,7 @@
 
 6- install multer. >>DO(handling multipart/form-data) Link(https://www.npmjs.com/package/multer).
 
-7- install mongoose-slug-plugin.>>DO(Slugs for Mongoose ) Link(https://www.npmjs.com/package/mongoose-slug-plugin).
+7- install mongoose-slug-plugin.>>DO(Slugs for Mongoose ) Link(https://www.npmjs.com/package/mongoose-slug-plugin)
 
 8- install cors.>>DO(providing a Connect/Express middleware) Link(https://www.npmjs.com/package/cors).
 
@@ -58,6 +58,8 @@
 7- Declare & Set Router : const noteBooksRouter = express.Router(); : to use it for the routers(post - get - delete).
 
 8- export Routers to use it in the app.js : EX: module.exports = noteBooksRouter; 
+
+9- .populate("note") > use populate to get all data instead of the id only.
 
 
 

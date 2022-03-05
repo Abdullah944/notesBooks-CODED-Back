@@ -61,18 +61,3 @@ exports.UpdateNoteBook = async (req, res, next) => {
     next(error);
   }
 };
-// try {
-//   if (req.file) {
-//     req.body.image = `/${req.file.path}`;
-//     req.body.image = req.body.image.replace("\\", "/");
-//   }
-//   const product = await Product.findByIdAndUpdate(
-//     { _id: req.product._id },
-//     req.body,
-//     { new: true, runValidators: true } // returns the updated product
-//   );
-//   res.json(product);
-// } catch (error) {
-//   next(error);
-// }
-// };
