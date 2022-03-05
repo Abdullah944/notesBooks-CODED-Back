@@ -15,13 +15,15 @@ exports.getNote = async (req, res, next) => {
 exports.createNote = async (req, res, next) => {
   try {
     const { noteBookID } = req.params; // take noteBookID
+
     req.body.note = noteBookID;
     const note = req.body;
-    const newNote = await Note.create(note);
-    await NoteBook.findOneAndUpdate(noteBookID, {
-      $push: { notes: newNote._id },
+    const createdNote = await Note.create(note);
+
+    await NoteBook.findByIdAndUpdate(noteBookID, {
+      $push: { note: createdNote._id },
     });
-    res.status(201).json({ msg: "Note Created", newNote: newNote });
+    res.status(201).json({ msg: "Note Created", createdNote: createdNote });
   } catch (error) {
     next(error);
   }
@@ -37,3 +39,22 @@ exports.deleteNote = async (req, res, next) => {
   }
 };
 // TODO <Update> noteBook Func TODO:fix it last thing is *null*:
+// exports.updateProductController = async (req, res, next) => {
+//     try {
+//       if (req.file) {
+//         req.body.image = `${req.file.path}`;
+//       }
+//       const id = req.product._id;
+//       const product = req.body;
+//       const updatedProduct = await Product.findByIdAndUpdate(id, product, {
+//         runValidators: true,
+//         new: true,
+//       });
+//       res.status(200).json({
+//         msg: "Product Updated",
+//         payload: updatedProduct,
+//       });
+//     } catch (error) {
+//       next(error);
+//     }
+//   };

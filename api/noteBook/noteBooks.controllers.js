@@ -5,7 +5,10 @@ const NoteBook = require("../../DB_model_index/models/NoteBook");
 
 exports.fetchNoteBook = async (req, res, next) => {
   try {
-    const noteBooks = await NoteBook.find(); // TODO> find all the noteBooks.
+    const noteBooks = await NoteBook.find().populate("note"); // TODO> find all the noteBooks. If you want specific {info} use : .populate({
+    //   path: "products",
+    //   select: ["name", "description", "color", "image", "quantity", "price"],
+    // });
     //TODO>  if you find it give it back to me:
     res.json(noteBooks);
   } catch (error) {

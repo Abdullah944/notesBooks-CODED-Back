@@ -20,8 +20,8 @@ const notesRouter = express.Router();
 
 // });
 //? Assign Router to Controllers
-notesRouter.get("/", getNote);
-notesRouter.post("/api/note", createNote);
+notesRouter.get("/api/note", getNote);
+notesRouter.post("/api/note/:noteBookID/noteBook", createNote);
 notesRouter.delete("/api/note/:noteID", deleteNote);
 
 //? Export Router

@@ -21,8 +21,8 @@ const noteBooksRouter = express.Router();
 //? Assign Router to Controllers
 noteBooksRouter.get("/api/noteBook", fetchNoteBook);
 noteBooksRouter.post("/api/noteBook", createNoteBook);
-noteBooksRouter.delete("/api/noteBook/:noteBooksID", deleteNoteBook);
-noteBooksRouter.put("/api/noteBook/:noteBooksID", UpdateNoteBook);
+noteBooksRouter.delete("/api/noteBook/:noteBookID", deleteNoteBook);
+noteBooksRouter.put("/api/noteBook/:noteBookID", UpdateNoteBook);
 
 //? Export Router
 module.exports = noteBooksRouter;
