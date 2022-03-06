@@ -25,3 +25,5 @@ module.exports = model("NoteBook", NoteBookSchema);
 // 1- declare it with const  + use the new keyWord.
 // 2= put what info inside.
 // 3- export it.
+
+// steps to practice:

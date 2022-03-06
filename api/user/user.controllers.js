@@ -5,13 +5,12 @@ const bcrypt = require("bcrypt");
 // Authorization / token:
 const jwt = require("jsonwebtoken");
 // make file to keep the return password keys:
-const { keys } = require("../../config/keys");
+const { keys } = require("../../config/keys"); // we use .env here.
 // to use env file (JWT_EXPIRATION_MS - JWT_SECRET):
 const dotenv = require("dotenv");
 dotenv.config();
 
 // TODO signup:
-
 exports.signup = async (req, res, next) => {
   try {
     const { password } = req.body;
@@ -24,26 +23,23 @@ exports.signup = async (req, res, next) => {
       exp: Date.now() + process.env.JWT_EXPIRATION_MS, //3 hour
     };
     const token = jwt.sign(JSON.stringify(payload), process.env.JWT_SECRET);
-    req.status(201).json({ token });
+    res.status(201).json({ token });
   } catch (error) {
     next(error);
   }
 };
 
 // TODO signin:
-exports.signin = (req, res, next) => {
-  const user = req.user;
-
+exports.signin = async (req, res, next) => {
+  const user = req.user; //  req.user = all data of the user that been taken from the local strategy middleware.
   const payload = {
     _id: user._id,
     username: user.username,
     firstName: user.firstName,
     lastName: user.lastName,
-    exp: process.env.JWT_EXPIRATION_MS,
+    exp: Date.now() + process.env.JWT_EXPIRATION_MS,
   };
-
-  const token = jwt.sign(JSON.stringify(payload), keys.JWT_SECRET);
-
+  const token = jwt.sign(JSON.stringify(payload), process.env.JWT_SECRET);
   res.status(201).json({ token });
 };
 
@@ -51,3 +47,5 @@ exports.signin = (req, res, next) => {
 //?--------------------------
 //? 1- add the schemas that you will use.
 //? 2- make the methods to use in the routers.
+
+// steps to practice:

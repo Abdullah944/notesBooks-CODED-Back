@@ -19,3 +19,5 @@ const NoteSchema = new Schema(
 NoteSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%>" });
 
 module.exports = model("Note", NoteSchema);
+
+// steps to practice:

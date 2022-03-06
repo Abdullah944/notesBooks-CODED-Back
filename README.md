@@ -49,6 +49,10 @@
 - install bcrypt >> DO(hash password) Link(https://www.npmjs.com/package/bcrypt).
 
 -  install passport >> DO(authentication middleware ) Link(https://www.npmjs.com/package/passport).
+
+- install passport-local >> DO (strategy for authenticating with a username and password.) Link(https://www.npmjs.com/package/passport-local)
+- install passport-jwt >> DO(This module lets you authenticate endpoints using a JSON web token)Link(http://www.passportjs.org/packages/passport-jwt/).
+
   -------------------------------------------------------------------------------------------------------
  ## D- General Explanations :
 - import in BackEnd : const express = require("express");
@@ -179,7 +183,7 @@ noteBooksRouter.delete("/api/noteBook/:noteBooksID", deleteNoteBook);
 const NoteBook = require("where the file located");
 
 - // <Update> noteBook Func:
-exports.NoteBookUpdate = async (req, res, next) => {
+  exports.NoteBookUpdate = async (req, res, next) => {
   try {
     if (req.file) {
       req.body.image = `/${req.file.path}`;
@@ -238,7 +242,7 @@ noteBooksRouter.post("/api/noteBook/:noteBooksID", NoteBookUpdate);
 -------------------------------------------------------------------------------------------------------
  ## F- optional 2 : use npms:
 
-### npm all in one line:>>    npm i express dotenv mongoose sequelize-slugify slugify multer cors jsonwebtoken bcrypt passport   <<
+### npm all in one line:>>    npm i express dotenv mongoose sequelize-slugify slugify multer cors jsonwebtoken bcrypt passport passport-local   <<
 
  - npm install =  npm i       = install all
  - npm i express
@@ -252,5 +256,7 @@ noteBooksRouter.post("/api/noteBook/:noteBooksID", NoteBookUpdate);
  - npm i jsonwebtoken 
  - npm i bcrypt
  - npm i passport
+ - npm i passport-local
+ - npm i passport-jwt
 
 -------------------------------------------------------------------------------------------------------

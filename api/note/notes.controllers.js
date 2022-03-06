@@ -1,6 +1,6 @@
 // TODO> 1- import/ require the schema to use it.
-const Note = require("../../DB_model_index/models/Note");
-const NoteBook = require("../../DB_model_index/models/NoteBook");
+const Note = require("../../database/models/Note");
+const NoteBook = require("../../database/models/NoteBook");
 
 // TODO> <Fetch/Get> noteBooks Func :
 exports.getNote = async (req, res, next) => {
@@ -65,3 +65,5 @@ exports.updateNote = async (req, res, next) => {
 //?--------------------------
 //? 1- add the schemas that you will use.
 //? 2- make the methods to use in the routers.
+
+// steps to practice:

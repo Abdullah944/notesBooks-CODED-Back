@@ -4,11 +4,14 @@ const router = express.Router();
 const passport = require("passport");
 
 router.post = ("/api/user/signup", signup);
-usersRouter.post(
-  "/api/user/signin",
-  passport.authenticate("local", { session: false }),
-  signin
-);
+// router.post =
+//   ("/api/user/signip",
+//   passport.authenticate("local", { session: false }),
+//   signin);
+router.post =
+  ("/api/user/signin",
+  // passport.authenticate("local", { session: false }),
+  signin);
 module.exports = router;
 
-// steps:
+// steps to practice:

@@ -33,5 +33,4 @@ notesRouter.put("/api/note/:noteID", updateNote);
 //? Export Router
 module.exports = notesRouter;
 
-// shop = notesBook
-// product = note
+// steps to practice:

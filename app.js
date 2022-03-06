@@ -1,6 +1,6 @@
 //? Imports
 const express = require("express");
-const connectDB = require("./DB_model_index/index");
+const connectDB = require("./database/index");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const path = require("path");
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 //? Auth :
 app.use(passport.initialize());
 passport.use(localStrategy);
-passport.use(jwtStrategy);
+// passport.use(jwtStrategy);
 //? use img:
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.protocol}://${req.get("host")}${req.path}`);
@@ -59,4 +59,4 @@ app.listen(PORT, () => {
   console.log(`The application is running on ${PORT}`);
   connectDB();
 });
-// steps:
+// steps to practice:
