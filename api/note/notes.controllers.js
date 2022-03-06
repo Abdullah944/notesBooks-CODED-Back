@@ -5,8 +5,8 @@ const NoteBook = require("../../DB_model_index/models/NoteBook");
 // TODO> <Fetch/Get> noteBooks Func :
 exports.getNote = async (req, res, next) => {
   try {
-    const notes = await Note.find(); //step1 find all.
-    res.json(notes); //step2 respond all.
+    const notes = await Note.find(); // find all.
+    res.json(notes); // respond all.
   } catch (error) {
     next(error);
   }
@@ -24,7 +24,9 @@ exports.createNote = async (req, res, next) => {
     await NoteBook.findByIdAndUpdate(noteBookID, {
       $push: { note: createdNote._id },
     });
-    res.status(201).json({ msg: "Note Created", createdNote: createdNote });
+    res
+      .status(201)
+      .json({ msg: "Note Created successfully", createdNote: createdNote });
   } catch (error) {
     next(error);
   }
@@ -41,20 +43,25 @@ exports.deleteNote = async (req, res, next) => {
   }
 };
 
-// TODO <Update> noteBook Func TODO:fix it last thing is *null*:
+// TODO <Update> noteBook Func :
 exports.updateNote = async (req, res, next) => {
   try {
-    const { noteID } = req.params;
+    const { noteID } = req.params; // take the noteID from the params(:noteID) in the routers path you put.
     const note = req.body;
     const updatedNote = await Note.findByIdAndUpdate(noteID, note, {
       runValidators: true,
       new: true,
     });
     res.status(200).json({
-      msg: "Note Updated",
+      msg: "Note Updated successfully",
       payload: updatedNote,
     });
   } catch (error) {
     next(error);
   }
 };
+
+//? Steps for this file:
+//?--------------------------
+//? 1- add the schemas that you will use.
+//? 2- make the methods to use in the routers.

@@ -23,7 +23,9 @@ exports.createNoteBook = async (req, res, next) => {
     }
     const noteBook = req.body; //  req.body = allows you to access data in a string or JSON object <From> the <Client> side.
     const createdNoteBook = await NoteBook.create(noteBook);
-    res.status(200).json({ msg: "NoteBook Created", payload: createdNoteBook });
+    res
+      .status(200)
+      .json({ msg: "NoteBook Created successfully", payload: createdNoteBook });
   } catch (error) {
     next(error);
   }
@@ -42,9 +44,9 @@ exports.deleteNoteBook = async (req, res, next) => {
     next(error);
   }
 };
-// TODO <Update> noteBook Func TODO:fix it last thing is *null*:
+// TODO <Update> noteBook Func:
 exports.UpdateNoteBook = async (req, res, next) => {
-  const { noteBookID } = req.params;
+  const { noteBookID } = req.params; // take the noteBookID from the params(:noteID) in the routers path you put.
   const notebook = req.body;
   try {
     //update take at least 2 argument=> update(id of the product , the data given, options(optional)) -- new is options to give you the updated data without fetching it (auto - directly):
@@ -61,3 +63,8 @@ exports.UpdateNoteBook = async (req, res, next) => {
     next(error);
   }
 };
+
+//? Steps for this file:
+//?--------------------------
+//? 1- add the schemas that you will use.
+//? 2- make the methods to use in the routers.

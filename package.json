@@ -18,13 +18,16 @@
   },
   "homepage": "https://github.com/Abdullah944/notesBooks-CODED-Back#readme",
   "dependencies": {
-    "express": "^4.17.3", 
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
     "dotenv": "^15.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.10",
-    "sequelize-slugify": "^1.6.0",
-    "slugify": "^1.6.5",
-    "multer": "^1.4.4",
     "mongoose-slug-plugin": "^2.1.0",
-    "cors": "^2.8.5"
+    "multer": "^1.4.4",
+    "passport": "^0.5.2",
+    "sequelize-slugify": "^1.6.0",
+    "slugify": "^1.6.5"
   }
 }

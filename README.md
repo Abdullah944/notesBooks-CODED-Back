@@ -1,8 +1,8 @@
-# notesBooks-CODED-Back it's a good ref
+# notesBooks-CODED-Back (it's a good ref):
 
-# BackEnd Steps:
+## BackEnd Steps:
 
- # A- make folders & files:
+ ## A- make folders & files:
 1- create api folder that have inside it folders of routers(EX:Assign Router to Controllers EX:(productsRouter.get("/", fetchProductsController) & controllers(EX:<Fetch/Get> noteBooks method (all methods inside)).
 
 2- create data base folder that have models inside it(Schemas) , & index file (to connect to data base mongoose & to use mangoDB compass app).
@@ -14,77 +14,97 @@
 5- make app.js the "main" in the package.json.
 
   -------------------------------------------------------------------------------------------------------
- # B- connect to your DB:
-1- make mangoDB account.
-2- go to : Atlas(create new Cluster)> connect(connect your app , take the link a & use it in the index.js(don't forget to change (DB name & password )))>
+ ## B- connect to your DB:
+- make mangoDB account.
 
-3-make the template code copy paste from the site(with the changes).
+- go to : Atlas(create new Cluster)> connect(connect your app , take the link a & use it in the index.js(don't forget to change (DB name & password )))>
 
-4- add .env file to make it hidden from github.
+- make the template code copy paste from the site(with the changes).
+
+- add .env file to make it hidden .
+  
   -------------------------------------------------------------------------------------------------------
- # C- add dependencies & use them:
-1- install express.>>DO(handlers for requests & more) Link(https://expressjs.com/).
+ ## C- add dependencies & use them:
+- install express.>>DO(handlers for requests & more) Link(https://expressjs.com/).
 
-2- install dotenv.>>DO(loads environment variables from a .env file) Link(https://www.npmjs.com/package/dotenv).
-            steps:(https://www.mariokandut.com/how-to-set-up-and-test-a-dot-env-file-in-node-js/)
+- install dotenv.>>DO(loads environment variables from a .env file) Link(https://www.npmjs.com/package/dotenv).
+- steps:(https://www.mariokandut.com/how-to-set-up-and-test-a-dot-env-file-in-node-js/)
 
-3- install mongoose.>>DO(Mongoose provides a straight-forward, schema-based solution to model your application data.) Link(https://mongoosejs.com/).
+- install mongoose.>>DO(Mongoose provides a straight-forward, schema-based solution to model your application data.) Link(https://mongoosejs.com/).
 
-4- install sequelize-slugify.>>DO(create and update unique slugs) Link(https://www.npmjs.com/package/sequelize-slugify).
+- install sequelize-slugify.>>DO(create and update unique slugs) Link(https://www.npmjs.com/package/sequelize-slugify).
 
-5- install slugify.>>DO(make a word slug shape) Link(https://www.npmjs.com/package/slugify).
+- install slugify.>>DO(make a word slug shape) Link(https://www.npmjs.com/package/slugify).
 
-6- install multer. >>DO(handling multipart/form-data) Link(https://www.npmjs.com/package/multer).
+- install multer. >>DO(handling multipart/form-data) Link(https://www.npmjs.com/package/multer).
 
-7- install mongoose-slug-plugin.>>DO(Slugs for Mongoose ) Link(https://www.npmjs.com/package/mongoose-slug-plugin)
+- install mongoose-slug-plugin.>>DO(Slugs for Mongoose ) Link(https://www.npmjs.com/package/mongoose-slug-plugin)
 
-8- install cors.>>DO(providing a Connect/Express middleware) Link(https://www.npmjs.com/package/cors).
+- install cors.>>DO(providing a Connect/Express middleware) Link(https://www.npmjs.com/package/cors).
 
-9- install nodemon.>>DO(to make the server update with every save) Link() Add this to package.json("start": "nodemon app.js ") under "scripts".
+- install nodemon.>>DO(to make the server update with every save) Link(https://www.npmjs.com/package/nodemon) Add this to package.json("start": "nodemon app.js ") under "scripts".
+
+- install jwt >> DO(Authorization / token -signin signup) Link(https://www.npmjs.com/package/jsonwebtoken).
+
+- install bcrypt >> DO(hash password) Link(https://www.npmjs.com/package/bcrypt).
+
+-  install passport >> DO(authentication middleware ) Link(https://www.npmjs.com/package/passport).
   -------------------------------------------------------------------------------------------------------
- # D- General Explanations :
-1- import in BackEnd : const express = require("express");
+ ## D- General Explanations :
+- import in BackEnd : const express = require("express");
 
-2- to use the import : app.use(cors()); In app.js.
+- to use the import : app.use(cors()); In app.js.
  
-3- to use the "urlencoded" body input in post man add this in the app.js : app.use(express.urlencoded({ extended: true }));
+- to use the "urlencoded" body input in post man add this in the app.js : app.use(express.urlencoded({ extended: true }));
 
-4- express.Router() : how an application’s endpoints (URIs) respond to client requests.
+- express.Router() : how an application’s endpoints (URIs) respond to client requests.
 
-5- async & await : wait for specific line to run then the other to get information> (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
+- async & await : wait for specific line to run then the other to get information> (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
 
-6- next() : use for handle error and go to the next line or error > (https://expressjs.com/en/guide/error-handling.html).
+- next() : use for handle error and go to the next line or error > (https://expressjs.com/en/guide/error-handling.html).
 
-7- Declare & Set Router : const noteBooksRouter = express.Router(); : to use it for the routers(post - get - delete).
+- Declare & Set Router : const noteBooksRouter = express.Router(); : to use it for the routers(post - get - delete).
 
-8- export Routers to use it in the app.js : EX: module.exports = noteBooksRouter; 
+- export Routers to use it in the app.js : EX: module.exports = noteBooksRouter; 
 
-9- .populate("note") > use populate to get all data instead of the id only.
+- .populate("note") > use populate to get all data instead of the id only.
 
 
 
   -------------------------------------------------------------------------------------------------------
-# Example 1 :
-## Schema :
+## Example Schema :
 
-- const { Schema, model } = require("mongoose");
-const mongooseSlugPlugin = require("mongoose-slug-plugin");
-
-const NoteBookSchema = new Schema({
-  name: String,
-  description: String,
-  slug: String,
-  note: {
-    type: Schema.Types.ObjectId,
-    ref: "Note",
-  },
+- const UserSchema = new Schema({
+	username: {
+		type: String,
+		required: true,
+		unique: true,
+	},
+	password: {
+		type: String,
+		required: true,
+	},
+	email: {
+		type: String,
+		trim: true,
+		lowercase: true,
+		unique: true,
+		required: "Email address is required",
+		validate: [validateEmail, "Please fill a valid email address"],
+		match: [
+			/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+			"Please fill a valid email address",
+		],
+	},
+	firstName: String,
+	lastName: String,
 });
 
-NoteBookSchema.plugin(mongooseSlugPlugin, { tmpl: "<%=name%=>" });
-module.exports = model("NoteBook", NoteBookSchema);
+module.exports = model("User", UserSchema);
+
 -------------------------------------------------------------------------------------------------------
-# Example 2 :
-## controller GET/ Fetch :
+## Example GET / FETCH Method:
+### controller GET/ Fetch :
 
 - // TODO> 1- import/ require the schema to use it.
 const NoteBook = require("../../DB_model_index/models/NoteBook");
@@ -104,9 +124,10 @@ exports.fetchNoteBook = async (req, res, next) => {
 ## router Get :
 ### Assign Router to Controllers:
 noteBooksRouter.get("/", fetchNoteBook);
+
 -------------------------------------------------------------------------------------------------------
-# Example 2 :
-## controller Create :
+## Example Create Method :
+### controller Create :
 
 - // TODO> <Create> noteBooks Func :
 exports.createNoteBook = async (req, res, next) => {
@@ -124,9 +145,10 @@ exports.createNoteBook = async (req, res, next) => {
 ## router Get :
 ### Assign Router to Controllers:
 noteBooksRouter.post("/api/noteBook", createNoteBook);
+
 -------------------------------------------------------------------------------------------------------
-# Example 3 :
-## controller Delete :
+## Example Delete Method :
+### controller Delete :
 
 // TODO> <Delete> noteBooks Func :
 exports.deleteNoteBook = async (req, res, next) => {
@@ -145,9 +167,10 @@ exports.deleteNoteBook = async (req, res, next) => {
 ## router Get :
 ### Assign Router to Controllers:
 noteBooksRouter.delete("/api/noteBook/:noteBooksID", deleteNoteBook);
+
 -------------------------------------------------------------------------------------------------------
-# Example 4 :
-## controller Update :
+## Example Update Method :
+### controller Update :
 
 // TODO <Update> noteBook Func:
 exports.NoteBookUpdate = async (req, res, next) => {
@@ -169,6 +192,7 @@ exports.NoteBookUpdate = async (req, res, next) => {
 ## router Get :
 ### Assign Router to Controllers:
 noteBooksRouter.post("/api/noteBook/:noteBooksID", NoteBookUpdate);
+
 -------------------------------------------------------------------------------------------------------
  ## F- optional : connect repo to GitHub:
 
@@ -209,7 +233,7 @@ git checkout -b <branch name>.  = make branch and go in it.
 -------------------------------------------------------------------------------------------------------
  ## F- optional 2 : use npms:
 
-### npm all in one line:>>    npm i express dotenv mongoose sequelize-slugify slugify multer cors   <<
+### npm all in one line:>>    npm i express dotenv mongoose sequelize-slugify slugify multer cors jsonwebtoken bcrypt passport   <<
 
  - npm install =  npm i       = install all
  - npm i express
@@ -220,5 +244,8 @@ git checkout -b <branch name>.  = make branch and go in it.
  - npm i multer
  - npm i cors
  - npm i -g nodemon
+ - npm i jsonwebtoken 
+ - npm i bcrypt
+ - npm i passport
 
 -------------------------------------------------------------------------------------------------------
