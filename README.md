@@ -106,15 +106,15 @@ module.exports = model("User", UserSchema);
 ## Example GET / FETCH Method:
 ### controller GET/ Fetch :
 
-- // TODO> 1- import/ require the schema to use it.
-const NoteBook = require("../../DB_model_index/models/NoteBook");
+- import/ require the schema to use it.
+const NoteBook = require("where the file located");
 
-- // TODO> <Fetch/Get> noteBooks Func :
+- //<Fetch/Get> noteBooks Func :
 
 exports.fetchNoteBook = async (req, res, next) => {
   try {
-    const noteBooks = await NoteBook.find(); // TODO> find all the noteBooks.
-- //TODO>  if you find it give it back to me:
+    const noteBooks = await NoteBook.find(); // find all the noteBooks.
+- // if you find it give it back to me:
     res.json(noteBooks);
 
   } catch (error) {
@@ -128,8 +128,10 @@ noteBooksRouter.get("/", fetchNoteBook);
 -------------------------------------------------------------------------------------------------------
 ## Example Create Method :
 ### controller Create :
+- import/ require the schema to use it.
+const NoteBook = require("where the file located");
 
-- // TODO> <Create> noteBooks Func :
+- // <Create> noteBooks Func :
 exports.createNoteBook = async (req, res, next) => {
   try {
     if (req.file) {
@@ -149,8 +151,10 @@ noteBooksRouter.post("/api/noteBook", createNoteBook);
 -------------------------------------------------------------------------------------------------------
 ## Example Delete Method :
 ### controller Delete :
+- import/ require the schema to use it.
+const NoteBook = require("where the file located");
 
-// TODO> <Delete> noteBooks Func :
+ - // <Delete> noteBooks Func :
 exports.deleteNoteBook = async (req, res, next) => {
   const { noteBooksID } = req.params; // take the params given by the user => google.com/1 <=
   const foundNotebook = await NoteBook.findByIdAndDelete(noteBooksID); // if the id's of schema &== params id  => delete it.
@@ -171,8 +175,10 @@ noteBooksRouter.delete("/api/noteBook/:noteBooksID", deleteNoteBook);
 -------------------------------------------------------------------------------------------------------
 ## Example Update Method :
 ### controller Update :
+-  import/ require the schema to use it.
+const NoteBook = require("where the file located");
 
-// TODO <Update> noteBook Func:
+- // <Update> noteBook Func:
 exports.NoteBookUpdate = async (req, res, next) => {
   try {
     if (req.file) {
@@ -196,21 +202,21 @@ noteBooksRouter.post("/api/noteBook/:noteBooksID", NoteBookUpdate);
 -------------------------------------------------------------------------------------------------------
  ## F- optional : connect repo to GitHub:
 
-1- create a new repository on the command line::
+- create a new repository on the command line::
 
-echo "# <name of your repo>" >> README.md
-git init
-qit add README.md
-qit commit -m "first commit"
-git branch -M main
-git remote add origin git@github.com:<URL LINK HERE>
-git push -u origin main
+- echo "# <name of your repo>" >> README.md
+- git init
+- git add README.md
+- git commit -m "first commit"
+- git branch -M main
+- git remote add origin git@github.com:<URL LINK HERE>
+- git push -u origin main
 
-2- push an existing repository from the command line::
+- push an existing repository from the command line::
 
-qit remote add origin git@qithub.com: <URL LINK HERE>
-git branch -M main
-git push -u oriqin main
+- git remote add origin git@qithub.com: <URL LINK HERE>
+- git branch -M main
+- git push -u oriqin main
 
 ### To add files and push them (after connecting them):
 - git add .
@@ -218,17 +224,16 @@ git push -u oriqin main
 - git push
 
 ### using branches :
--git branch <name of the brach>    = make branch.
-git switch <name of the branch>    = switch branch.
-git add .
-git commit -m "done"
-git  push            -------   git push --set-upstream origin branch name.
-GO github = pull / merge / && resolve conflict  / delete branch
-git fetch  = take all the pull requests  .
-git pull     = pull all changes.
-git branch -d  <name of branch>       = delete brach locality . 
-------------------->
-git checkout -b <branch name>.  = make branch and go in it.
+- git branch <name of the brach>    = make branch.
+- git switch <name of the branch>    = switch branch.
+- git add .
+- git commit -m "done"
+- git  push            -------   git push --set-upstream origin branch name.
+- GO github = pull / merge / && resolve conflict  / delete branch.
+- git fetch  = take all the pull requests  .
+- git pull     = pull all changes.
+- git branch -d  <name of branch>       = delete brach locality . 
+- git checkout -b <branch name>.  = make branch and go in it.
 
 -------------------------------------------------------------------------------------------------------
  ## F- optional 2 : use npms:
