@@ -48,6 +48,7 @@ exports.updateNote = async (req, res, next) => {
   try {
     const { noteID } = req.params; // take the noteID from the params(:noteID) in the routers path you put.
     const note = req.body;
+    // Update methods:
     const updatedNote = await Note.findByIdAndUpdate(noteID, note, {
       runValidators: true,
       new: true,
@@ -67,3 +68,7 @@ exports.updateNote = async (req, res, next) => {
 //? 2- make the methods to use in the routers.
 
 // steps to practice:
+// TODO> <Fetch/Get> noteBooks Func :
+// TODO> <Delete> noteBooks Func :
+// TODO> <Create> noteBooks Func :
+// TODO> <Update> noteBooks Func :

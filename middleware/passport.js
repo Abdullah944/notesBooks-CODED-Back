@@ -1,13 +1,18 @@
+// User Scheme:
 const User = require("../database/models/User");
+// hash the password:
 const bcrypt = require("bcrypt");
+// user the BearerToken token and decode or compare the user code to input code:
 const JWTStrategy = require("passport-jwt").Strategy;
 const { fromAuthHeaderAsBearerToken } = require("passport-jwt").ExtractJwt;
 
 const LocalStrategy = require("passport-local").Strategy;
-
+// local Strategy function:
 exports.localStrategy = new LocalStrategy(async (username, password, done) => {
   try {
+    // find the user by username:
     const user = await User.findOne({ username: username });
+    //compare passwords:
     const passwordsMatch = user
       ? await bcrypt.compare(password, user.password)
       : false;
@@ -17,6 +22,7 @@ exports.localStrategy = new LocalStrategy(async (username, password, done) => {
     done(error);
   }
 });
+//  JWTStrategy function:
 
 exports.jwtStrategy = new JWTStrategy(
   {
@@ -36,4 +42,8 @@ exports.jwtStrategy = new JWTStrategy(
   }
 );
 
-// steps to practice:
+//? MORE INFO: 1- fromAuthHeaderAsBearerToken = BearerToken for making token.
+
+// steps to practice (for best practice understand and write it by your self):
+// 1- make JWTStrategy function:
+// 2- // local Strategy function:

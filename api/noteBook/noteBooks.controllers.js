@@ -18,11 +18,13 @@ exports.fetchNoteBook = async (req, res, next) => {
 // TODO> <Create> noteBooks Func :
 exports.createNoteBook = async (req, res, next) => {
   try {
+    // for using img:
     if (req.file) {
       req.body.image = `${req.file.path}`;
     }
     const noteBook = req.body; //  req.body = allows you to access data in a string or JSON object <From> the <Client> side.
-    const createdNoteBook = await NoteBook.create(noteBook);
+
+    const createdNoteBook = await NoteBook.create(noteBook); // CREATE NOTEBOOK.
     res
       .status(200)
       .json({ msg: "NoteBook Created successfully", payload: createdNoteBook });
@@ -33,6 +35,7 @@ exports.createNoteBook = async (req, res, next) => {
 // TODO> <Delete> noteBooks Func :
 exports.deleteNoteBook = async (req, res, next) => {
   const { noteBookID } = req.params; // take the params given by the user => google.com/1 <=
+
   const foundNotebook = await NoteBook.findByIdAndDelete(noteBookID); // if the id's of schema &== params id  => delete it.
   try {
     if (foundNotebook) {
@@ -70,3 +73,7 @@ exports.UpdateNoteBook = async (req, res, next) => {
 //? 2- make the methods to use in the routers.
 
 // steps to practice:
+// TODO> <Fetch/Get> noteBooks Func :
+// TODO> <Delete> noteBooks Func :
+// TODO> <Create> noteBooks Func :
+// TODO> <Update> noteBooks Func :

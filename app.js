@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 //? Auth :
 app.use(passport.initialize());
 passport.use(localStrategy);
-// passport.use(jwtStrategy);
+passport.use(jwtStrategy);
 //? use img:
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.protocol}://${req.get("host")}${req.path}`);
@@ -59,4 +59,9 @@ app.listen(PORT, () => {
   console.log(`The application is running on ${PORT}`);
   connectDB();
 });
-// steps to practice:
+
+//? steps to practice (for best practice understand and write it by your self):
+// 1- import / require every file you need.
+// 2- use the Files
+// 3- add routers and use them.
+// 4- add the port and listen.
